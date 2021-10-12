@@ -25,7 +25,8 @@
     "lint": "eslint lib --ext .js"
   },
   "dependencies": {
-    "jsfive": "^0.2.1"
+    "jsfive": "^0.2.1",
+    "satellite.js": "^4.1.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
