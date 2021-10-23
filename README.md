@@ -46,52 +46,19 @@ If you like to give feedback:
 - Is this bundled in a useful way? Do you want the lib hosted on a CDN?
 
 ## Getting Started
-
-To use this lib you either need the worker as `spectroplot.worker.js` in the lib location or
-you need to pass the worker location or the `Worker` to the Spectroplot constructor.
-
-With Webpack 4, you'll need to install `worker-loader`:
-```console
-npm install worker-loader --save-dev
-```
-
-or
-```console
-yarn add worker-loader --dev
-```
-
-then bundle the worker to some file:
+Create the Spectroplot with:
 
 ```js
-import SpectroplotWorker from 'worker-loader?filename=js/spectroplot.[hash].worker.js!spectroplot/lib/worker.js'
 import { Spectroplot } from 'spectroplot'
-```
 
-With Webpack 5 use something like:
-```js
-const SpectroplotWorker = Worker(new URL('spectroplot/lib/worker.js', import.meta.url))
-import { Spectroplot } from 'spectroplot'
+let spectroplot = new Spectroplot({
+    // ...
+})
 ```
 
 You likely want to include some minimal styles, see [`styles.css`](lib/styles.css):
 ```js
 import 'spectroplot/lib/styles.css'
-```
-
-then later pass the Worker to the constructor:
-```js
-let spectroplot = new Spectroplot({
-    workerOrUrl: SpectroplotWorker,
-    // ...
-})
-```
-
-You can also eagerly load the worker by using `startWorkers()`:
-```js
-import SpectroplotWorker from 'worker-loader?filename=js/spectroplot.[hash].worker.js!spectroplot/lib/worker.js'
-import { Spectroplot, startWorkers } from 'spectroplot'
-// start workers eagerly:
-startWorker(SpectroplotWorker) // no need to pass a worker option to `new Spectroplot()` now
 ```
 
 ## Using the API
